@@ -61,7 +61,7 @@ class Ui_MainWindow(object):
         if imgName == "":
             print("no")
         source = openslide.open_slide(imgName)
-        image = source.read_region((0, 0), 1, source.level_dimensions[1])
+        image = source.read_region((0, 0), source.level_count - 1, source.level_dimensions[source.level_count - 1])
         qimage = ImageQt(image)
         qixmap = QtGui.QPixmap.fromImage(qimage)
 
